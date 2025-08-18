@@ -21,7 +21,6 @@
     body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; color:var(--text); background:var(--bg); overflow-x:hidden}
     a{color:inherit; text-decoration:none}
     img{max-width:100%; height:auto; display:block}
-
     .wrap{max-width:var(--maxw); margin:0 auto; padding:0 14px}
 
     /* ШАПКА (мобильная) */
@@ -31,16 +30,15 @@
     .brand img{height:28px}
     .brand-title{font-weight:700; font-size:14px}
 
-    /* ХЕРО (мобильный) */
+    /* ХЕРО */
     .hero{padding:18px 0; background:linear-gradient(180deg,#F0FBF2 0%, #FFFFFF 60%); border-bottom:1px solid var(--border)}
     .eyebrow{display:inline-block; background:var(--green-ghost); color:var(--green-ink); border:1px dashed var(--green); padding:6px 10px; border-radius:999px; font-weight:700; font-size:11px}
     .h1{font-size:24px; line-height:1.25; margin:10px 0; font-weight:800}
     .h1 strong{color:var(--green)}
     .lead{font-size:14px; color:var(--muted); margin:0 0 12px}
-
     .car-hero{margin:10px auto 14px; max-width:100%; border-radius:12px}
 
-    /* Блок условий */
+    /* Блоки */
     .section{padding:20px 0}
     .section h2{font-size:20px; margin:0 0 12px; font-weight:800}
     .steps{display:grid; grid-template-columns:1fr; gap:10px}
@@ -49,7 +47,7 @@
     .step h3{margin:8px 0 4px; font-size:15px}
     .step p{margin:0; color:var(--muted); font-size:13px}
 
-    /* Форма регистрации */
+    /* Карточка/форма */
     .form-card{background:#fff; border:1px solid var(--border); border-radius:var(--radius-lg); padding:16px; box-shadow:var(--shadow)}
     .form h2{margin:0 0 10px; font-size:20px}
     .form p{margin:0 0 10px; color:var(--muted); font-size:14px}
@@ -59,6 +57,12 @@
     .input:focus{border-color:var(--green)}
     .check{display:flex; align-items:flex-start; gap:8px; font-size:12px; color:var(--muted); margin:6px 0}
     .form-actions{margin-top:8px}
+
+    /* Кнопки и состояния */
+    .btn[disabled], button[disabled]{
+      background:#9CA3AF !important; color:#fff !important;
+      cursor:not-allowed; box-shadow:none; opacity:.95;
+    }
 
     /* Сообщения */
     .msg{margin-top:12px; padding:10px; border-radius:10px; font-size:13px; display:none}
@@ -83,7 +87,6 @@
       <div class="brand-right">
         <img src="https://i.postimg.cc/W4Hs8MZg/Screenshot-2025-08-18-212538.png" alt="Promo" style="height:36px" />
       </div>
-      </div>
     </div>
   </header>
 
@@ -91,8 +94,7 @@
   <section class="hero">
     <div class="wrap">
       <img class="car-hero" src="https://mirfar.com/upload/iblock/29e/b1616qvgbn7heohx99slqhzuwvmzwj1f.jpg" alt="Главный приз — автомобиль" />
-      <span class="eyebrow">Главный приз — автомобиль</span>
-      <h1 class="h1">Выиграй <strong>АВТОМОБИЛЬ</strong> с «Креатин Актив»!</h1>
+            <h1 class="h1">Выиграй <strong>АВТОМОБИЛЬ</strong> с «Креатин Актив»!</h1>
       <p class="lead">Приобретая «Креатин Актив», вы становитесь участником розыгрыша призов. Регистрируйте код из пачки и ждите результаты!</p>
     </div>
   </section>
@@ -106,6 +108,21 @@
         <div class="step"><div class="num">2</div><h3>Код</h3><p>Найдите уникальный код в пачке.</p></div>
         <div class="step"><div class="num">3</div><h3>Регистрация</h3><p>Зарегистрируйте код на сайте.</p></div>
         <div class="step"><div class="num">4</div><h3>Ждите итоги</h3><p>Следите за результатами розыгрыша.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Instagram -->
+  <section class="section" id="insta-cta">
+    <div class="wrap">
+      <div class="form-card" style="text-align:center">
+        <p style="margin:0 0 10px; font-size:14px; color:var(--muted)">
+          Подробнее об условиях и новостях акции — на нашей странице Instagram.
+        </p>
+        <a href="https://www.instagram.com/belinda.nutrition/" target="_blank" rel="noopener"
+           class="btn" style="display:inline-block; background:var(--green); color:#fff; font-weight:700; padding:12px 18px; border-radius:12px; text-decoration:none">
+          Открыть Instagram
+        </a>
       </div>
     </div>
   </section>
@@ -125,20 +142,48 @@
             <label class="field">
               <span class="label">Телефон</span>
               <input class="input" id="phone" name="phone" type="tel" inputmode="tel" placeholder="+992900000000" required>
-              <div class="hint" style="font-size:12px; color:var(--muted); margin-top:4px">Формат: только цифры и +, 9–15 символов</div>
+              <div class="hint" style="font-size:12px; color:var(--muted); margin-top:4px"></div>
             </label>
             <label class="field">
               <span class="label">Код из пачки</span>
-              <input class="input" id="code" name="code" placeholder="XXXX-XXXX-XXXX" minlength="6" required>
+              <input class="input" id="code" name="code" placeholder="XXXXXXXX" minlength="6" required>
             </label>
-            <label class="check">
-              <input type="checkbox" required> Я согласен с правилами акции
+            <label class="check" for="agree">
+              <input id="agree" type="checkbox" checked required> Я согласен с правилами акции
             </label>
             <div class="form-actions">
-              <button class="btn btn--primary" id="submitBtn" type="submit" style="background:var(--green); color:#fff; border:none; padding:14px; font-size:16px; border-radius:12px; width:100%; font-weight:700">Зарегистрировать код</button>
+              <button class="btn btn--primary" id="submitBtn" type="submit" style="background:var(--green); color:#fff; border:none; padding:14px; font-size:16px; border-radius:12px; width:100%; font-weight:700">
+                Зарегистрировать код
+              </button>
             </div>
             <div id="msg" class="msg"></div>
           </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- МОИ КОДЫ -->
+  <section class="section" id="my-codes">
+    <div class="wrap">
+      <div class="form-card">
+        <div class="form">
+          <h2>Посмотреть мои коды</h2>
+          <p>Введите номер телефона, который вы использовали при регистрации кодов.</p>
+          <form id="lookupForm" autocomplete="on">
+            <label class="field">
+              <span class="label">Телефон</span>
+              <input class="input" id="phoneLookup" name="phoneLookup" type="tel" inputmode="tel" placeholder="+992900000000" required>
+            </label>
+            <div class="form-actions">
+              <button class="btn btn--primary" id="lookupBtn" type="submit" style="background:var(--green); color:#fff; border:none; padding:14px; font-size:16px; border-radius:12px; width:100%; font-weight:700">
+                Посмотреть
+              </button>
+            </div>
+            <div id="lookupMsg" class="msg" style="display:none"></div>
+          </form>
+
+          <div id="codesBox" style="margin-top:12px; display:none"></div>
         </div>
       </div>
     </div>
@@ -149,10 +194,14 @@
   </footer>
 
   <script>
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw2dgHIBzsWIPTeIMj8KgFKNziamqdJWcWJYXndfI2718BhOIhLetvhVIQYmux9Y6FL/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz_BQ-S3fOiccrXWJqQj84CkxdXHuq_s7uktgPIZtMMI3tmlO4Poj-_OMZ8wEAJxa7B/exec';
     const form = document.getElementById('regForm');
     const btn  = document.getElementById('submitBtn');
     const msg  = document.getElementById('msg');
+    const agree = document.getElementById('agree');
+
+    // Год в футере
+    document.getElementById('y').textContent = new Date().getFullYear();
 
     function showMsg(text, ok){
       msg.textContent = text;
@@ -166,8 +215,33 @@
       else { v = v.replace(/\D/g,''); }
       return v;
     }
-    document.getElementById('y').textContent = new Date().getFullYear();
 
+    // === Локальное сохранение имени/телефона ===
+    const LS_KEY = 'reg_name_phone_creatin';
+    function saveNamePhone(){
+      const data = { name: form.name.value.trim(), phone: form.phone.value.trim() };
+      localStorage.setItem(LS_KEY, JSON.stringify(data));
+    }
+    function loadNamePhone(){
+      try{
+        const data = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
+        if(data.name)  form.name.value  = data.name;
+        if(data.phone) form.phone.value = data.phone;
+        // подставим сразу и в форму просмотра кодов
+        const pl = document.getElementById('phoneLookup');
+        if(pl && data.phone) pl.value = data.phone;
+      }catch(_){}
+    }
+    loadNamePhone();
+    form.name.addEventListener('input', saveNamePhone);
+    form.phone.addEventListener('input', saveNamePhone);
+
+    // Блокировка кнопки по чекбоксу
+    function syncSubmitState(){ btn.disabled = !agree.checked; }
+    agree.addEventListener('change', syncSubmitState);
+    syncSubmitState();
+
+    // Отправка регистрации
     form.addEventListener('submit', async (e)=>{
       e.preventDefault();
       msg.style.display = 'none';
@@ -179,6 +253,7 @@
       if(!name){ return showMsg('Укажите имя.', false); }
       if(!phone || !/^\+?\d{9,15}$/.test(phone)){ return showMsg('Телефон в неверном формате.', false); }
       if(!code){ return showMsg('Укажите ID-код.', false); }
+      if(!agree.checked){ return; }
 
       const originalBtn = btn.textContent;
       btn.disabled = true;
@@ -194,13 +269,123 @@
         const data = await res.json();
         const ok = data.status === 'ok';
         showMsg(data.message || (ok ? 'Успешно' : 'Ошибка'), ok);
-        if(ok){ form.reset(); }
+
+        // Сохраняем имя/телефон, очищаем только код
+        if(ok){
+          saveNamePhone();
+          form.code.value = '';
+          form.code.focus();
+        }
       } catch(err){
         console.error(err);
         showMsg('Не удалось отправить данные. Проверьте интернет или URL скрипта.', false);
       } finally {
-        btn.disabled = false;
+        btn.disabled = !agree.checked;
         btn.textContent = originalBtn;
+      }
+    });
+
+    // ===== «Мои коды» =====
+    function normalizePhoneForQuery(v){
+      v = (v||'').trim();
+      if(v.startsWith('+')) return '+' + v.slice(1).replace(/\D/g,'');
+      return v.replace(/\D/g,'');
+    }
+
+    function pill(text){
+      return `<span style="
+        display:inline-block; padding:4px 8px; border-radius:999px;
+        font-size:12px; font-weight:700; background:var(--green-ghost); color:var(--green-ink);
+        border:1px dashed var(--green);">${text}</span>`;
+    }
+
+    function renderCodes(items){
+      function pad(n){ return String(n).padStart(2,'0'); }
+      function formatDT(s){
+        // ISO/длинная с GMT
+        if(/GMT|[A-Z]{3}/.test(s) || /\d{4}-\d{2}-\d{2}T/.test(s)){
+          const d = new Date(s);
+          if(!isNaN(d)){
+            return {
+              date: `${pad(d.getDate())}.${pad(d.getMonth()+1)}.${d.getFullYear()}`,
+              time: `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`
+            };
+          }
+        }
+        // dd.MM.yyyy HH:mm:ss
+        const m = s.match(/^(\d{2}\.\d{2}\.\d{4})\s+(\d{2}:\d{2}:\d{2})$/);
+        if(m) return {date:m[1], time:m[2]};
+        return {date: s || '—', time: ''};
+      }
+
+      if(!items || !items.length){
+        return '<div style="padding:12px; border:1px solid var(--border); border-radius:12px; background:#fff; color:var(--muted); font-size:14px">Записей не найдено.</div>';
+      }
+
+      return items.map(it => {
+        const dt = formatDT(it.datetime || '');
+        return `
+          <div style="background:#fff; border:1px solid var(--border); border-radius:12px; padding:12px; box-shadow:0 6px 14px rgba(0,0,0,.05); margin-bottom:10px">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:10px">
+              <div style="font-weight:800; font-size:15px; letter-spacing:.3px">Код: ${it.code}</div>
+              ${pill(it.result || '—')}
+            </div>
+            <div style="margin-top:6px; font-size:13px; color:var(--muted)">
+              Дата: ${dt.date}${dt.time ? `<br>Время: ${dt.time}` : ''}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    const lookupForm = document.getElementById('lookupForm');
+    const lookupBtn  = document.getElementById('lookupBtn');
+    const lookupMsg  = document.getElementById('lookupMsg');
+    const codesBox   = document.getElementById('codesBox');
+
+    function showLookupMsg(text, ok){
+      lookupMsg.textContent = text;
+      lookupMsg.className = 'msg ' + (ok ? 'ok' : 'err');
+      lookupMsg.style.display = 'block';
+      lookupMsg.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+
+    lookupForm.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      lookupMsg.style.display = 'none';
+      codesBox.style.display = 'none';
+      codesBox.innerHTML = '';
+
+      let phone = normalizePhoneForQuery(lookupForm.phoneLookup.value);
+      if(!phone || !/^\+?\d{9,15}$/.test(phone)){
+        return showLookupMsg('Телефон в неверном формате.', false);
+      }
+
+      const original = lookupBtn.textContent;
+      lookupBtn.disabled = true;
+      lookupBtn.innerHTML = '<span class="spinner"></span>Запрос…';
+
+      try{
+        const url = `${SCRIPT_URL}?action=list&phone=${encodeURIComponent(phone)}`;
+        const res = await fetch(url, { method: 'GET' });
+        const data = await res.json();
+
+        if(data.status !== 'ok'){
+          showLookupMsg(data.message || 'Ошибка запроса.', false);
+        }else{
+          const html = renderCodes(data.items || []);
+          codesBox.innerHTML = html;
+          codesBox.style.display = 'block';
+          if((data.items||[]).length === 0){
+            showLookupMsg('По вашему номеру не найдено регистраций.', true);
+          }
+        }
+      }catch(err){
+        console.error(err);
+        showLookupMsg('Не удалось получить данные. Проверьте интернет или URL скрипта.', false);
+      }finally{
+        lookupBtn.disabled = false;
+        lookupBtn.textContent = original;
       }
     });
   </script>
