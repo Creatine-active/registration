@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#00B607" />
+  <title>Розыгрыш «Креатин Актив» — Выиграй Автомобиль!</title>
+  <meta name="description" content="Приобретая Креатин Актив, вы становитесь участником розыгрыша призов. Главный приз — автомобиль! Регистрируйте коды и следите за итогами." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --green:#00B607; --green-ink:#009A05; --green-ghost:#E9FBEA;
+      --text:#0B1F14; --muted:#5B6B63; --bg:#F7FBF8; --card:#FFFFFF;
+      --border:#E6EFE9; --shadow:0 10px 26px rgba(0,0,0,.08);
+      --radius:16px; --radius-lg:22px; --maxw:560px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; color:var(--text); background:var(--bg); overflow-x:hidden}
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; height:auto; display:block}
+
+    .wrap{max-width:var(--maxw); margin:0 auto; padding:0 14px}
+
+    /* ШАПКА (мобильная) */
+    .header{position:sticky; top:0; z-index:40; background:#fff; border-bottom:1px solid var(--border)}
+    .head-row{display:flex; align-items:center; justify-content:space-between; height:60px; padding-left:max(14px, env(safe-area-inset-left)); padding-right:max(14px, env(safe-area-inset-right))}
+    .brand{display:flex; align-items:center; gap:10px}
+    .brand img{height:28px}
+    .brand-title{font-weight:700; font-size:14px}
+
+    /* ХЕРО (мобильный) */
+    .hero{padding:18px 0; background:linear-gradient(180deg,#F0FBF2 0%, #FFFFFF 60%); border-bottom:1px solid var(--border)}
+    .eyebrow{display:inline-block; background:var(--green-ghost); color:var(--green-ink); border:1px dashed var(--green); padding:6px 10px; border-radius:999px; font-weight:700; font-size:11px}
+    .h1{font-size:24px; line-height:1.25; margin:10px 0; font-weight:800}
+    .h1 strong{color:var(--green)}
+    .lead{font-size:14px; color:var(--muted); margin:0 0 12px}
+
+    .car-hero{margin:10px auto 14px; max-width:100%; border-radius:12px}
+
+    /* Блок условий */
+    .section{padding:20px 0}
+    .section h2{font-size:20px; margin:0 0 12px; font-weight:800}
+    .steps{display:grid; grid-template-columns:1fr; gap:10px}
+    .step{background:var(--card); border:1px solid var(--border); border-radius:12px; padding:12px; box-shadow:0 6px 14px rgba(0,0,0,.05)}
+    .step .num{width:26px; height:26px; border-radius:8px; display:grid; place-items:center; font-weight:800; color:#fff; background:var(--green)}
+    .step h3{margin:8px 0 4px; font-size:15px}
+    .step p{margin:0; color:var(--muted); font-size:13px}
+
+    /* Форма регистрации */
+    .form-card{background:#fff; border:1px solid var(--border); border-radius:var(--radius-lg); padding:16px; box-shadow:var(--shadow)}
+    .form h2{margin:0 0 10px; font-size:20px}
+    .form p{margin:0 0 10px; color:var(--muted); font-size:14px}
+    .field{display:flex; flex-direction:column; margin-bottom:10px}
+    .label{font-weight:600; font-size:13px; margin-bottom:6px}
+    .input{border:1px solid var(--border); border-radius:10px; padding:14px; font-size:16px; outline:none}
+    .input:focus{border-color:var(--green)}
+    .check{display:flex; align-items:flex-start; gap:8px; font-size:12px; color:var(--muted); margin:6px 0}
+    .form-actions{margin-top:8px}
+
+    /* Сообщения */
+    .msg{margin-top:12px; padding:10px; border-radius:10px; font-size:13px; display:none}
+    .msg.ok{background:#ecfdf5; color:#065f46; border:1px solid #bbf7d0}
+    .msg.err{background:#fef2f2; color:#7f1d1d; border:1px solid #fecaca}
+
+    /* Спиннер */
+    .spinner{display:inline-block; width:16px; height:16px; border-radius:50%; border:3px solid rgba(255,255,255,.35); border-top-color:#fff; animation:spin .9s linear infinite; vertical-align:-2px; margin-right:8px}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* Подвал */
+    .footer{padding:18px 0 calc(18px + env(safe-area-inset-bottom)); text-align:center; font-size:12px; color:#5a6b62}
+  </style>
+</head>
+<body>
+  <!-- ШАПКА -->
+  <header class="header">
+    <div class="head-row">
+      <div class="brand">
+        <img src="https://belinda.tj/img/main-logo.svg" alt="Belinda" />
+      </div>
+      <div class="brand-right">
+        <img src="https://i.postimg.cc/W4Hs8MZg/Screenshot-2025-08-18-212538.png" alt="Promo" style="height:36px" />
+      </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ХЕРО -->
+  <section class="hero">
+    <div class="wrap">
+      <img class="car-hero" src="https://mirfar.com/upload/iblock/29e/b1616qvgbn7heohx99slqhzuwvmzwj1f.jpg" alt="Главный приз — автомобиль" />
+      <span class="eyebrow">Главный приз — автомобиль</span>
+      <h1 class="h1">Выиграй <strong>АВТОМОБИЛЬ</strong> с «Креатин Актив»!</h1>
+      <p class="lead">Приобретая «Креатин Актив», вы становитесь участником розыгрыша призов. Регистрируйте код из пачки и ждите результаты!</p>
+    </div>
+  </section>
+
+  <!-- УСЛОВИЯ -->
+  <section class="section" id="rules">
+    <div class="wrap">
+      <h2>Как участвовать</h2>
+      <div class="steps">
+        <div class="step"><div class="num">1</div><h3>Покупка</h3><p>Приобретите «Креатин Актив».</p></div>
+        <div class="step"><div class="num">2</div><h3>Код</h3><p>Найдите уникальный код в пачке.</p></div>
+        <div class="step"><div class="num">3</div><h3>Регистрация</h3><p>Зарегистрируйте код на сайте.</p></div>
+        <div class="step"><div class="num">4</div><h3>Ждите итоги</h3><p>Следите за результатами розыгрыша.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- РЕГИСТРАЦИЯ -->
+  <section class="section" id="register">
+    <div class="wrap">
+      <div class="form-card">
+        <div class="form">
+          <h2>Регистрация участника</h2>
+          <p>Введите свои данные и код из пачки «Креатин Актив».</p>
+          <form id="regForm" autocomplete="on">
+            <label class="field">
+              <span class="label">Имя</span>
+              <input class="input" id="name" name="name" placeholder="Например, Фаррух" required>
+            </label>
+            <label class="field">
+              <span class="label">Телефон</span>
+              <input class="input" id="phone" name="phone" type="tel" inputmode="tel" placeholder="+992900000000" required>
+              <div class="hint" style="font-size:12px; color:var(--muted); margin-top:4px">Формат: только цифры и +, 9–15 символов</div>
+            </label>
+            <label class="field">
+              <span class="label">Код из пачки</span>
+              <input class="input" id="code" name="code" placeholder="XXXX-XXXX-XXXX" minlength="6" required>
+            </label>
+            <label class="check">
+              <input type="checkbox" required> Я согласен с правилами акции
+            </label>
+            <div class="form-actions">
+              <button class="btn btn--primary" id="submitBtn" type="submit" style="background:var(--green); color:#fff; border:none; padding:14px; font-size:16px; border-radius:12px; width:100%; font-weight:700">Зарегистрировать код</button>
+            </div>
+            <div id="msg" class="msg"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">© <span id="y"></span> Belinda · «Креатин Актив»</div>
+  </footer>
+
+  <script>
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw2dgHIBzsWIPTeIMj8KgFKNziamqdJWcWJYXndfI2718BhOIhLetvhVIQYmux9Y6FL/exec';
+    const form = document.getElementById('regForm');
+    const btn  = document.getElementById('submitBtn');
+    const msg  = document.getElementById('msg');
+
+    function showMsg(text, ok){
+      msg.textContent = text;
+      msg.className = 'msg ' + (ok ? 'ok' : 'err');
+      msg.style.display = 'block';
+      msg.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+    function normalizePhone(v){
+      v = (v||'').replace(/\s+/g,'').replace(/\((.*?)\)/g,'$1');
+      if(v.startsWith('+')){ v = '+' + v.slice(1).replace(/\D/g,''); }
+      else { v = v.replace(/\D/g,''); }
+      return v;
+    }
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      msg.style.display = 'none';
+
+      let name  = form.name.value.trim();
+      let phone = normalizePhone(form.phone.value);
+      let code  = form.code.value.trim().toUpperCase();
+
+      if(!name){ return showMsg('Укажите имя.', false); }
+      if(!phone || !/^\+?\d{9,15}$/.test(phone)){ return showMsg('Телефон в неверном формате.', false); }
+      if(!code){ return showMsg('Укажите ID-код.', false); }
+
+      const originalBtn = btn.textContent;
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner"></span>Отправка…';
+
+      try{
+        const fd = new FormData();
+        fd.append('name', name);
+        fd.append('phone', phone);
+        fd.append('id', code);
+
+        const res = await fetch(SCRIPT_URL, { method:'POST', body: fd });
+        const data = await res.json();
+        const ok = data.status === 'ok';
+        showMsg(data.message || (ok ? 'Успешно' : 'Ошибка'), ok);
+        if(ok){ form.reset(); }
+      } catch(err){
+        console.error(err);
+        showMsg('Не удалось отправить данные. Проверьте интернет или URL скрипта.', false);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = originalBtn;
+      }
+    });
+  </script>
+</body>
+</html>
